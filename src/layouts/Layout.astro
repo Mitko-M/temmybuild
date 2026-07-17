@@ -1,5 +1,6 @@
 ---
 // src/layouts/Layout.astro
+import '../styles/global.css';
 interface Props {
   description: string;
   lang: 'en' | 'bg'; // Strictly types your allowed languages
@@ -19,7 +20,8 @@ const siteOrigin = Astro.url.origin;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="../">
+    <link rel="icon" type="image/svg+xml" href="/temmybuild-icon.svg" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Primary SEO Meta Tags -->
@@ -40,17 +42,3 @@ const siteOrigin = Astro.url.origin;
     <slot />
   </body>
 </html>
-
-<style is:global>
-  *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>

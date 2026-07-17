@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+
+interface Props {
+    home: string;
+    projects: string;
+    services: string;
+    about: string;
+    gallery: string;
+    contact: string
+    quote: string
+}
+
+const {home, projects, services, about, gallery, contact, quote} = Astro.props;
+---
+<header>
+    <div id="logo">
+        <Image src={logo} alt="My logo" height={50}/>
+        <h1>
+            <span style="color: white;">TEMMY</span>
+            <span style="color: orange;">BUILD</span>
+        </h1>
+    </div>
+    <nav id="nav">
+        <a href="/">{home}</a>
+        <a href="#projects">{projects}</a>
+        <a href="#services">{services}</a>
+        <a href="#about">{about}</a>
+        <a href="#gallery">{gallery}</a>
+        <a href="#contact">{contact}</a>
+    </nav>
+    <a id="quote-btn" href="#contact">{quote}</a>
+</header>
+
+<style>
+    /* Small phones */
+    @media (max-width: 480px) {
+        
+    }
+
+    header {
+        padding: 3rem 0;
+        margin: 0 40;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #nav a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: var(--color-muted-foreground);
+    }
+
+    #nav a:hover {
+        color: var(--color-secondary-foreground);
+    }
+
+    #quote-btn {
+        text-decoration: none;
+        text-transform: uppercase;
+        background-color: var(--color-accent);
+        color: var(--color-accent-foreground);
+        padding: 10 20;
+        border-radius: var(--radius);
+    }
+
+    #quote-btn:hover {
+        background-color: #c9ab7a;
+    }
+</style>

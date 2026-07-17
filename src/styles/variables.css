@@ -1,0 +1,16 @@
+:root {
+    --color-background: #0f0e0d;
+    --color-foreground: #f5f2ed;
+    --color-card: #1a1816;
+    --color-card-foreground: #f5f2ed;
+    --color-primary: #b89a6a;
+    --color-primary-foreground: #0f0e0d;
+    --color-secondary: #2a2724;
+    --color-secondary-foreground: #f5f2ed;
+    --color-muted: #3a3632;
+    --color-muted-foreground: #9a9188;
+    --color-accent: #b89a6a;
+    --color-accent-foreground: #0f0e0d;
+    --color-border: #2e2b28;
+    --radius: 6px;
+}
