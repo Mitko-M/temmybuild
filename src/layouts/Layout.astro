@@ -37,7 +37,7 @@ const siteOrigin = Astro.url.origin;
     <!-- x-default tells Google where to send visitors who don't speak BG or EN -->
     <link rel="alternate" hreflang="x-default" href={`${siteOrigin}/bg/`} />
   </head>
-  <body>
+  <body style="min-height: 100vh;">
     <!-- Slots let you drop your unique page content into this main shell -->
     <slot />
   </body>
