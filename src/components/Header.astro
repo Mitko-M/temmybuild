@@ -75,7 +75,7 @@ const { home, projects, services, about, gallery, contact, quote } = Astro.props
   }
 
   #desktop-wrapper {
-    padding: 24px 0;
+    padding: 48px 0;
     margin: 0 40px;
     display: flex;
     justify-content: space-between;
@@ -185,7 +185,6 @@ const { home, projects, services, about, gallery, contact, quote } = Astro.props
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
-    background-color: var(--color-background);
     transition:
       max-height 0.35s ease,
       opacity 0.35s ease,
@@ -241,27 +240,47 @@ const { home, projects, services, about, gallery, contact, quote } = Astro.props
 <script defer>
   const burger = document.querySelector("#burger-menu");
   const mobileNav = document.querySelector("#mobile-nav");
+  const desktopWrapper = document.querySelector('#desktop-wrapper');
   const header = document.querySelector('header');
 
-  window.addEventListener("resize", () => {
-    const isMobile = window.matchMedia("(max-width: 480px)").matches;
+  function updateHeaderState() {
+    const scrolled = window.scrollY >= 24;
+    const menuOpen = burger.classList.contains("open");
 
-    if(isMobile) {
+    if (menuOpen) {
+      header.classList.add("nav-scroll");
+      return;
+    }
+
+    if (scrolled) {
+      header.classList.add("nav-scroll");
+      desktopWrapper.style.paddingTop = '24px';
+      desktopWrapper.style.paddingBottom = '24px';
+    } else if(!menuOpen) {
+      header.classList.remove("nav-scroll");
+      desktopWrapper.style.paddingTop = '48px';
+      desktopWrapper.style.paddingBottom = '48px';
+    }
+  }
+
+  // This resize event listener was added to fix DevTools viewport glitch where mobile nav remained on desktop after changing
+  window.addEventListener("resize", () => {
+    const isMobile = window.matchMedia("(max-width: 1000px)").matches;
+
+    // If switching to desktop force close the mobile menu
+    if(!isMobile) {
         burger.classList.remove("open");
         mobileNav.classList.add("hidden");
     }
+
+    updateHeaderState();
   })
 
   burger.addEventListener("click", () => {
     burger.classList.toggle("open");
     mobileNav.classList.toggle("hidden");
+    updateHeaderState();
   });
 
-  window.addEventListener('scroll', (e) => {
-    if(e.currentTarget.scrollY >= 24) {
-      header.classList.add('nav-scroll')
-    } else {
-      header.classList.remove('nav-scroll')
-    }
-  });
+  window.addEventListener('scroll', updateHeaderState);
 </script>
