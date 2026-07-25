@@ -1,18 +1,12 @@
 ---
 import heroBackground from '../assets/hero-background.webp'
+import type { HeroLocale } from '../content/locales/types'
 
 interface Props {
-    tagline: string;
-    title: string;
-    description: string;
-    primaryBtn: string;
-    secondaryBtn: string;
-    experience: string;
-    finishedProjects: string;
-    clientSatisfaction: string;
+    locale: HeroLocale
 }
 
-const { tagline, title, description, primaryBtn, secondaryBtn, experience, finishedProjects, clientSatisfaction } = Astro.props
+const { locale } = Astro.props
 ---
 
 <section id="hero-section" style={`background-image: url('${heroBackground.src}');`}>
@@ -22,24 +16,24 @@ const { tagline, title, description, primaryBtn, secondaryBtn, experience, finis
 
   <!-- Content -->
   <div id="hero-content">
-    <p class="hero-tagline">{tagline}</p>
+    <p class="hero-tagline">{locale.tagline}</p>
 
-    <h1 class="hero-title" set:html={title}></h1>
+    <h1 class="hero-title" set:html={locale.title}></h1>
 
     <p class="hero-description">
-      {description}
+      {locale.description}
     </p>
 
     <div class="hero-buttons">
       <a href="#projects" class="btn-primary">
-        {primaryBtn}
+        {locale.primaryBtn}
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
 
       <a href="#contact" class="btn-secondary">
-        {secondaryBtn}
+        {locale.secondaryBtn}
       </a>
     </div>
 
@@ -47,15 +41,15 @@ const { tagline, title, description, primaryBtn, secondaryBtn, experience, finis
     <div class="hero-stats">
       <div>
         <div class="stat-number">20+</div>
-        <div class="stat-label">{experience}</div>
+        <div class="stat-label">{locale.experience}</div>
       </div>
       <div>
         <div class="stat-number">400+</div>
-        <div class="stat-label">{finishedProjects}</div>
+        <div class="stat-label">{locale.finishedProjects}</div>
       </div>
       <div>
         <div class="stat-number">98%</div>
-        <div class="stat-label">{clientSatisfaction}</div>
+        <div class="stat-label">{locale.clientSatisfaction}</div>
       </div>
     </div>
   </div>

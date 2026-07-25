@@ -1,18 +1,13 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../assets/logo.png";
+import type { NavigationLocale } from "../content/locales/types";
 
 interface Props {
-  home: string;
-  projects: string;
-  services: string;
-  about: string;
-  gallery: string;
-  contact: string;
-  quote: string;
+  locale: NavigationLocale
 }
 
-const { home, projects, services, about, gallery, contact, quote } = Astro.props;
+const { locale } = Astro.props;
 ---
 
 <header>
@@ -26,15 +21,14 @@ const { home, projects, services, about, gallery, contact, quote } = Astro.props
     </a>
 
     <nav id="nav">
-      <a href="#">{home}</a>
-      <a href="#projects">{projects}</a>
-      <a href="#services">{services}</a>
-      <a href="#about">{about}</a>
-      <a href="#gallery">{gallery}</a>
-      <a href="#contact">{contact}</a>
+      <a href="#projects">{locale.projects}</a>
+      <a href="#services">{locale.services}</a>
+      <a href="#about">{locale.about}</a>
+      <a href="#gallery">{locale.gallery}</a>
+      <a href="#contact">{locale.contact}</a>
     </nav>
 
-    <a class="quote-btn" href="#contact">{quote}</a>
+    <a class="quote-btn" href="#contact">{locale.quote}</a>
 
     <button id="burger-menu" aria-label="Menu">
       <span></span>
@@ -44,13 +38,12 @@ const { home, projects, services, about, gallery, contact, quote } = Astro.props
   </div>
 
   <nav id="mobile-nav" class="hidden">
-    <a href="#">{home}</a>
-    <a href="#projects">{projects}</a>
-    <a href="#services">{services}</a>
-    <a href="#about">{about}</a>
-    <a href="#gallery">{gallery}</a>
-    <a href="#contact">{contact}</a>
-    <a class="quote-btn" href="#contact">{quote}</a>
+    <a href="#projects">{locale.projects}</a>
+    <a href="#services">{locale.services}</a>
+    <a href="#about">{locale.about}</a>
+    <a href="#gallery">{locale.gallery}</a>
+    <a href="#contact">{locale.contact}</a>
+    <a class="quote-btn" href="#contact">{locale.quote}</a>
   </nav>
 </header>
 
