@@ -1,4 +1,4 @@
-//! TODO: Updated demo data with real data
+//! TODO: Updated demo data with real data and add locales for them too
 export const projects = [
   {
     id: 'carrara-marble-bathroom',

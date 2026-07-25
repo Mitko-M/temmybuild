@@ -1,11 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro'
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import HeroSections from '../../components/HeroSection.astro'
+import FeaturedProjects from '../../components/FeaturedProjects.astro';
+import en from '../../content/locales/en.json'
 ---
 
 <Layout lang='en' description='A professional experienced tiler'>
-	<Header home='Home' projects='Projects' services='Services' about='About' gallery='Gallery' contact='Contact' quote='Get a quote'/>
+	<Header locale={en.nav}/>
+	<HeroSections locale={en.hero}/>
+	<FeaturedProjects locale={en.projects}/>
 </Layout>
