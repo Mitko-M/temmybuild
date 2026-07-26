@@ -59,6 +59,7 @@ const { locale } = Astro.props;
     right: 0;
     z-index: 50;
     transition: all 0.5s;
+    padding: 0 12rem;
   }
 
   .nav-scroll {
@@ -199,6 +200,9 @@ const { locale } = Astro.props;
      Mobile Layout
      =========================== */
   @media (max-width: 1000px) {
+    header {
+      padding: 0;
+    }
     #desktop-wrapper {
       margin: 0 20px !important;
       padding: 24px 0 !important;

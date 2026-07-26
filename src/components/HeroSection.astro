@@ -1,6 +1,7 @@
 ---
 import heroBackground from '../assets/hero-background.webp'
 import type { HeroLocale } from '../content/locales/types'
+import { Image } from 'astro:assets'
 
 interface Props {
     locale: HeroLocale
@@ -9,7 +10,8 @@ interface Props {
 const { locale } = Astro.props
 ---
 
-<section id="hero-section" style={`background-image: url('${heroBackground.src}');`}>
+<section id="hero-section">  
+  <Image id="hero-background" src={heroBackground} alt={"Master tiler placing a tile"}/>
   <!-- Background overlays -->
   <div class="gradient-vertical"></div>
   <div class="gradient-horizontal"></div>
@@ -59,13 +61,19 @@ const { locale } = Astro.props
   /* ===========================
      Hero Section Base
      =========================== */
+
+  #hero-background {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    opacity: 0.5;
+  }
+
   #hero-section {
     position: relative;
     min-height: 100vh;
     width: 100%;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     display: flex;
     align-items: flex-end;
     overflow: hidden;
@@ -121,8 +129,14 @@ const { locale } = Astro.props
   #hero-content {
     position: relative;
     z-index: 10;
-    padding: 140px 40px 80px;
-    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80rem;
+    width: 100%;
+    padding-left: 1.5rem; 
+    padding-right: 1.5rem;
+    padding-bottom: 5rem;
+    padding-top: 9rem;  
   }
 
   /* ===========================
@@ -231,7 +245,9 @@ const { locale } = Astro.props
      =========================== */
   @media (max-width: 1000px) {
     #hero-content {
-      padding: 120px 20px 60px;
+      padding-left: 3rem;
+      padding-right: 3rem;
+      padding-bottom: 7rem;
     }
 
     .hero-title {
