@@ -1,12 +1,15 @@
 ---
 import type { FeaturedProjectsLocale } from '../content/locales/types';
-import { projects } from '../content/projects/projects';
+import { createProjectData } from '../content/projects/projects';
 
 interface Props {
+  localeType: string;
   locale: FeaturedProjectsLocale;
 }
 
-const { locale } = Astro.props;
+const { locale, localeType } = Astro.props;
+
+const projects = createProjectData(localeType);
 ---
 
 <section id="projects" class="projects-section">
