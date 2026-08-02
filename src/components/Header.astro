@@ -59,7 +59,7 @@ const { locale } = Astro.props;
     right: 0;
     z-index: 50;
     transition: all 0.5s;
-    padding: 0 12rem;
+    padding: 0 2rem;
   }
 
   .nav-scroll {
@@ -86,7 +86,14 @@ const { locale } = Astro.props;
   #mobile-nav {
     display: flex;
     align-items: center;
-    gap: 20px;
+  }
+
+  #nav {
+    gap: clamp(10px, 1.5vw, 24px);
+  }
+
+  #mobile-nav {
+    gap: 20px
   }
 
   #nav a,
@@ -95,10 +102,25 @@ const { locale } = Astro.props;
     text-transform: uppercase;
     color: var(--color-muted-foreground);
   }
+  
+  #mobile-nav a {
+    font-size: 16px;
+    padding: 8px 2px;
+    width: 100%;
+  }
+
+  #nav a {
+    white-space: nowrap;
+    font-size: clamp(12px, 1.1vw, 16px)
+  }
 
   #nav a:hover,
   #mobile-nav a:hover {
     color: var(--color-secondary-foreground);
+  }
+
+  .active {
+    color: var(--color-secondary-foreground) !important;
   }
 
   .quote-btn {
@@ -106,8 +128,10 @@ const { locale } = Astro.props;
     text-transform: uppercase;
     background-color: var(--color-accent);
     color: var(--color-accent-foreground) !important;
-    padding: 10px 20px;
+    padding: 0.8vw 1.5vw;
     border-radius: var(--radius);
+    white-space: nowrap;
+    font-size: clamp(12px, 1.2vw, 16px);
   }
 
   .quote-btn:hover {
@@ -218,6 +242,10 @@ const { locale } = Astro.props;
 
     #mobile-nav .quote-btn {
         display: block !important;
+        text-align: center;
+        padding: 12px 24px;
+        font-size: 14px;
+        width: 100%;
     }
 
     #burger-menu {
@@ -234,50 +262,68 @@ const { locale } = Astro.props;
   }
 </style>
 
-<script defer>
-  const burger = document.querySelector("#burger-menu");
-  const mobileNav = document.querySelector("#mobile-nav");
-  const desktopWrapper = document.querySelector('#desktop-wrapper');
-  const header = document.querySelector('header');
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector("#burger-menu");
+    const mobileNav = document.querySelector("#mobile-nav");
+    const desktopWrapper = document.querySelector('#desktop-wrapper');
+    const header = document.querySelector('header');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#nav a, #mobile-nav a');
 
-  function updateHeaderState() {
-    const scrolled = window.scrollY >= 24;
-    const menuOpen = burger.classList.contains("open");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          const id = entry.target.id;
 
-    if (menuOpen) {
-      header.classList.add("nav-scroll");
-      return;
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+
+    function updateHeaderState() {
+      const scrolled = window.scrollY >= 24;
+      const menuOpen = burger.classList.contains("open");
+
+      if (menuOpen) {
+        header.classList.add("nav-scroll");
+        return;
+      }
+
+      if (scrolled) {
+        header.classList.add("nav-scroll");
+        desktopWrapper.style.paddingTop = '24px';
+        desktopWrapper.style.paddingBottom = '24px';
+      } else if(!menuOpen) {
+        header.classList.remove("nav-scroll");
+        desktopWrapper.style.paddingTop = '48px';
+        desktopWrapper.style.paddingBottom = '48px';
+      }
     }
 
-    if (scrolled) {
-      header.classList.add("nav-scroll");
-      desktopWrapper.style.paddingTop = '24px';
-      desktopWrapper.style.paddingBottom = '24px';
-    } else if(!menuOpen) {
-      header.classList.remove("nav-scroll");
-      desktopWrapper.style.paddingTop = '48px';
-      desktopWrapper.style.paddingBottom = '48px';
-    }
-  }
+    // This resize event listener was added to fix DevTools viewport glitch where mobile nav remained on desktop after changing
+    window.addEventListener("resize", () => {
+      const isMobile = window.matchMedia("(max-width: 1000px)").matches;
 
-  // This resize event listener was added to fix DevTools viewport glitch where mobile nav remained on desktop after changing
-  window.addEventListener("resize", () => {
-    const isMobile = window.matchMedia("(max-width: 1000px)").matches;
+      // If switching to desktop force close the mobile menu
+      if(!isMobile) {
+          burger.classList.remove("open");
+          mobileNav.classList.add("hidden");
+      }
 
-    // If switching to desktop force close the mobile menu
-    if(!isMobile) {
-        burger.classList.remove("open");
-        mobileNav.classList.add("hidden");
-    }
+      updateHeaderState();
+    })
 
-    updateHeaderState();
-  })
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("open");
+      mobileNav.classList.toggle("hidden");
+      updateHeaderState();
+    });
 
-  burger.addEventListener("click", () => {
-    burger.classList.toggle("open");
-    mobileNav.classList.toggle("hidden");
-    updateHeaderState();
+    window.addEventListener('scroll', updateHeaderState);
+
+    sections.forEach(section => observer.observe(section));
   });
-
-  window.addEventListener('scroll', updateHeaderState);
 </script>
