@@ -32,6 +32,8 @@ export default defineConfig([
     ],
     rules: {
       "prettier/prettier": "warn",
+      "no-irregular-whitespace": "off",
+      "no-misleading-character-class": "off",
     },
   },
 
