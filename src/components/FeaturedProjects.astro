@@ -1,6 +1,6 @@
 ---
-import type { FeaturedProjectsLocale } from '../content/locales/types';
-import { createProjectData } from '../content/projects/projects';
+import type { FeaturedProjectsLocale } from "../content/locales/types";
+import { createProjectData } from "../content/projects/projects";
 
 interface Props {
   localeType: string;
@@ -16,44 +16,51 @@ const projects = createProjectData(localeType);
   <div class="projects-header">
     <div>
       <p class="eyebrow">{locale.tagline}</p>
-      <h2 class="section-title" set:html={locale.title}></h2>
+      <h2 class="section-title" set:html={locale.title} />
     </div>
 
     <a href="#gallery" class="view-gallery">{locale.viewGallery}</a>
   </div>
 
   <div class="projects-grid">
-    {projects.map((p) => (
-      <article class={`project-card ${p.spanLarge ? 'span-large' : ''}`} data-id={p.id}>
-        <div class="media">
-          <img src={p.img} alt={p.title} loading="lazy" />
-        </div>
+    {
+      projects.map((p) => (
+        <article
+          class={`project-card ${p.spanLarge ? "span-large" : ""}`}
+          data-id={p.id}
+        >
+          <div class="media">
+            <img src={p.img} alt={p.title} loading="lazy" />
+          </div>
 
-        <div class="overlay" aria-hidden="true"></div>
+          <div class="overlay" aria-hidden="true" />
 
-        <div class="meta">
-          <p class="meta-top">{p.category} — {p.year}</p>
-          <h3 class="project-title">{p.title}</h3>
-          <p class="project-location">{p.location}</p>
-        </div>
+          <div class="meta">
+            <p class="meta-top">
+              {p.category} — {p.year}
+            </p>
+            <h3 class="project-title">{p.title}</h3>
+            <p class="project-location">{p.location}</p>
+          </div>
 
-        <div class="label">
-          <span>{p.category}</span>
-        </div>
-      </article>
-    ))}
+          <div class="label">
+            <span>{p.category}</span>
+          </div>
+        </article>
+      ))
+    }
   </div>
 </section>
 
 <style>
   /* Use global theme variables (defined elsewhere) */
-  .projects-section{
+  .projects-section {
     max-width: 1200px;
     margin: 0 auto;
     padding: 8rem 1.5rem;
   }
 
-  .projects-header{
+  .projects-header {
     display: flex;
     gap: 1.5rem;
     align-items: end;
@@ -61,16 +68,16 @@ const projects = createProjectData(localeType);
     margin-bottom: 3.5rem;
   }
 
-  .eyebrow{
+  .eyebrow {
     color: var(--color-primary);
     font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: .3em;
-    margin-bottom: .5rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 0.5rem;
     font-weight: 600;
   }
 
-  .section-title{
+  .section-title {
     font-family: var(--font-display, inherit) !important;
     font-size: 2.25rem;
     line-height: 1;
@@ -79,44 +86,46 @@ const projects = createProjectData(localeType);
     color: var(--color-foreground);
   }
 
-  .section-title em{
+  .section-title em {
     font-style: italic;
     font-weight: 300;
     color: var(--color-primary);
     font-family: inherit;
   }
 
-  .view-gallery{
+  .view-gallery {
     color: var(--color-muted-foreground);
     text-transform: uppercase;
-    letter-spacing: .2em;
+    letter-spacing: 0.2em;
     font-size: 12px;
     border-bottom: 1px solid var(--color-muted);
     padding-bottom: 2px;
     text-decoration: none;
-    transition: color .18s ease, border-color .18s ease;
+    transition:
+      color 0.18s ease,
+      border-color 0.18s ease;
   }
 
-  .view-gallery:hover{
+  .view-gallery:hover {
     color: var(--color-primary);
     border-color: var(--color-primary);
   }
 
   /* Grid */
-  .projects-grid{
+  .projects-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
   }
 
-  @media (min-width: 720px){
-    .projects-grid{
+  @media (min-width: 720px) {
+    .projects-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  @media (min-width: 1024px){
-    .projects-grid{
+  @media (min-width: 1024px) {
+    .projects-grid {
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: 1fr;
       gap: 1rem;
@@ -124,7 +133,7 @@ const projects = createProjectData(localeType);
   }
 
   /* Card */
-  .project-card{
+  .project-card {
     position: relative;
     overflow: hidden;
     background: var(--color-card);
@@ -135,52 +144,56 @@ const projects = createProjectData(localeType);
   }
 
   /* Make the first project span two rows on large screens */
-  .project-card.span-large{
+  .project-card.span-large {
     grid-row: span 2;
   }
 
-  .media{
+  .media {
     width: 100%;
     aspect-ratio: 4 / 5;
     overflow: hidden;
   }
 
-  @media (min-width: 1024px){
-    .media{
+  @media (min-width: 1024px) {
+    .media {
       aspect-ratio: auto;
       height: 100%;
     }
   }
 
-  .media img{
+  .media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform .7s ease;
+    transition: transform 0.7s ease;
   }
 
-  .project-card:hover .media img{
+  .project-card:hover .media img {
     transform: scale(1.05);
   }
 
   /* Hover overlay */
-  .overlay{
+  .overlay {
     position: absolute;
     inset: 0;
     /* use background with the page background color to darken image */
-    background: linear-gradient(to top, rgba(15,14,13,0.9) 0%, transparent 60%);
+    background: linear-gradient(
+      to top,
+      rgba(15, 14, 13, 0.9) 0%,
+      transparent 60%
+    );
     opacity: 0;
-    transition: opacity .28s ease;
+    transition: opacity 0.28s ease;
     pointer-events: none;
   }
 
-  .project-card:hover .overlay{
+  .project-card:hover .overlay {
     opacity: 1;
   }
 
   /* Meta that slides up */
-  .meta{
+  .meta {
     position: absolute;
     left: 0;
     right: 0;
@@ -188,53 +201,55 @@ const projects = createProjectData(localeType);
     padding: 1.25rem;
     transform: translateY(1rem);
     opacity: 0;
-    transition: transform .28s ease, opacity .28s ease;
+    transition:
+      transform 0.28s ease,
+      opacity 0.28s ease;
     z-index: 3;
   }
 
-  .project-card:hover .meta{
+  .project-card:hover .meta {
     transform: translateY(0);
     opacity: 1;
   }
 
-  .meta-top{
+  .meta-top {
     color: var(--color-primary);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: .18em;
-    margin: 0 0 .35rem 0;
+    letter-spacing: 0.18em;
+    margin: 0 0 0.35rem 0;
     font-weight: 600;
   }
 
-  .project-title{
+  .project-title {
     margin: 0;
     font-size: 1.125rem;
     font-weight: 600;
     color: var(--color-card-foreground);
   }
 
-  .project-location{
-    margin: .35rem 0 0 0;
+  .project-location {
+    margin: 0.35rem 0 0 0;
     color: var(--color-muted-foreground);
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 
   /* Always visible label */
-  .label{
+  .label {
     position: absolute;
     top: 0.75rem;
     left: 0.75rem;
     z-index: 4;
   }
 
-  .label span{
+  .label span {
     font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: .18em;
+    letter-spacing: 0.18em;
     /* translucent background using the page background color */
-    background: rgba(15,14,13,0.7);
+    background: rgba(15, 14, 13, 0.7);
     color: var(--color-muted-foreground);
-    padding: .35rem .6rem;
+    padding: 0.35rem 0.6rem;
     border-radius: 4px;
     backdrop-filter: blur(4px);
     display: inline-block;
@@ -242,13 +257,17 @@ const projects = createProjectData(localeType);
 
   /* Small adjustments for accessibility and spacing */
   .project-card:focus-within .overlay,
-  .project-card:focus-within .meta{
+  .project-card:focus-within .meta {
     opacity: 1;
     transform: translateY(0);
   }
 
-  @media (max-width: 720px){
-    .section-title{ font-size: 1.75rem; }
-    .media{ aspect-ratio: 3 / 4; }
+  @media (max-width: 720px) {
+    .section-title {
+      font-size: 1.75rem;
+    }
+    .media {
+      aspect-ratio: 3 / 4;
+    }
   }
 </style>

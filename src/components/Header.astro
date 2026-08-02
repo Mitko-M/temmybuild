@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 import type { NavigationLocale } from "../content/locales/types";
 
 interface Props {
-  locale: NavigationLocale
+  locale: NavigationLocale;
 }
 
 const { locale } = Astro.props;
@@ -93,7 +93,7 @@ const { locale } = Astro.props;
   }
 
   #mobile-nav {
-    gap: 20px
+    gap: 20px;
   }
 
   #nav a,
@@ -102,7 +102,7 @@ const { locale } = Astro.props;
     text-transform: uppercase;
     color: var(--color-muted-foreground);
   }
-  
+
   #mobile-nav a {
     font-size: 16px;
     padding: 8px 2px;
@@ -111,7 +111,7 @@ const { locale } = Astro.props;
 
   #nav a {
     white-space: nowrap;
-    font-size: clamp(12px, 1.1vw, 16px)
+    font-size: clamp(12px, 1.1vw, 16px);
   }
 
   #nav a:hover,
@@ -241,11 +241,11 @@ const { locale } = Astro.props;
     }
 
     #mobile-nav .quote-btn {
-        display: block !important;
-        text-align: center;
-        padding: 12px 24px;
-        font-size: 14px;
-        width: 100%;
+      display: block !important;
+      text-align: center;
+      padding: 12px 24px;
+      font-size: 14px;
+      width: 100%;
     }
 
     #burger-menu {
@@ -263,25 +263,31 @@ const { locale } = Astro.props;
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     const burger = document.querySelector("#burger-menu");
     const mobileNav = document.querySelector("#mobile-nav");
-    const desktopWrapper = document.querySelector('#desktop-wrapper');
-    const header = document.querySelector('header');
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('#nav a, #mobile-nav a');
+    const desktopWrapper = document.querySelector("#desktop-wrapper");
+    const header = document.querySelector("header");
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("#nav a, #mobile-nav a");
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          const id = entry.target.id;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
 
-          navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-          });
-        }
-      });
-    }, { threshold: 0.5 });
+            navLinks.forEach((link) => {
+              link.classList.toggle(
+                "active",
+                link.getAttribute("href") === `#${id}`,
+              );
+            });
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
 
     function updateHeaderState() {
       const scrolled = window.scrollY >= 24;
@@ -294,12 +300,12 @@ const { locale } = Astro.props;
 
       if (scrolled) {
         header.classList.add("nav-scroll");
-        desktopWrapper.style.paddingTop = '24px';
-        desktopWrapper.style.paddingBottom = '24px';
-      } else if(!menuOpen) {
+        desktopWrapper.style.paddingTop = "24px";
+        desktopWrapper.style.paddingBottom = "24px";
+      } else if (!menuOpen) {
         header.classList.remove("nav-scroll");
-        desktopWrapper.style.paddingTop = '48px';
-        desktopWrapper.style.paddingBottom = '48px';
+        desktopWrapper.style.paddingTop = "48px";
+        desktopWrapper.style.paddingBottom = "48px";
       }
     }
 
@@ -308,13 +314,13 @@ const { locale } = Astro.props;
       const isMobile = window.matchMedia("(max-width: 1000px)").matches;
 
       // If switching to desktop force close the mobile menu
-      if(!isMobile) {
-          burger.classList.remove("open");
-          mobileNav.classList.add("hidden");
+      if (!isMobile) {
+        burger.classList.remove("open");
+        mobileNav.classList.add("hidden");
       }
 
       updateHeaderState();
-    })
+    });
 
     burger.addEventListener("click", () => {
       burger.classList.toggle("open");
@@ -322,8 +328,8 @@ const { locale } = Astro.props;
       updateHeaderState();
     });
 
-    window.addEventListener('scroll', updateHeaderState);
+    window.addEventListener("scroll", updateHeaderState);
 
-    sections.forEach(section => observer.observe(section));
+    sections.forEach((section) => observer.observe(section));
   });
 </script>

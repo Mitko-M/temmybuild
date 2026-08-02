@@ -28,11 +28,11 @@ export default defineConfig([
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommended,
-      prettierConfig
+      prettierConfig,
     ],
     rules: {
-      "prettier/prettier": "warn"
-    }
+      "prettier/prettier": "warn",
+    },
   },
 
   // ============================
@@ -44,21 +44,18 @@ export default defineConfig([
       parser: astroParser,
       parserOptions: {
         parser: tseslint.parser,
-        extraFileExtensions: [".astro"]
+        extraFileExtensions: [".astro"],
       },
-      globals: globals.browser
+      globals: globals.browser,
     },
     plugins: {
       astro: astroPlugin,
-      prettier: prettierPlugin
+      prettier: prettierPlugin,
     },
-    extends: [
-      astroPlugin.configs.recommended,
-      prettierConfig
-    ],
+    extends: [astroPlugin.configs.recommended, prettierConfig],
     rules: {
-      "prettier/prettier": "warn"
-    }
+      "prettier/prettier": "warn",
+    },
   },
 
   // ============================
@@ -68,7 +65,7 @@ export default defineConfig([
     files: ["**/*.json"],
     plugins: { json },
     language: "json/json",
-    extends: ["json/recommended"]
+    extends: ["json/recommended"],
   },
 
   // ============================
@@ -78,6 +75,6 @@ export default defineConfig([
     files: ["**/*.css"],
     plugins: { css },
     language: "css/css",
-    extends: ["css/recommended"]
-  }
+    extends: ["css/recommended"],
+  },
 ]);

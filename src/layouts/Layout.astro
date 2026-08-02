@@ -1,15 +1,18 @@
 ---
 // src/layouts/Layout.astro
-import '../styles/global.css';
+import "../styles/global.css";
 interface Props {
   description: string;
-  lang: 'en' | 'bg'; // Strictly types your allowed languages
+  lang: "en" | "bg"; // Strictly types your allowed languages
 }
 
 const { description, lang } = Astro.props;
 
 // Dynamically generate the canonical URL for this specific page
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://yourportfolio.com');
+const canonicalURL = new URL(
+  Astro.url.pathname,
+  Astro.site || "https://yourportfolio.com",
+);
 
 // Get the base domain path dynamically (helps testing locally and in production)
 const siteOrigin = Astro.url.origin;
@@ -20,20 +23,20 @@ const siteOrigin = Astro.url.origin;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../">
+    <link rel="stylesheet" href="../" />
     <link rel="icon" type="image/svg+xml" href="/temmybuild-icon.svg" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Primary SEO Meta Tags -->
     <title>Temmybuild</title>
-    <meta name="title" content='Temmybuild' />
+    <meta name="title" content="Temmybuild" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Points search engines to the actual subfolders where languages live -->
     <link rel="alternate" hreflang="bg" href={`${siteOrigin}/bg/`} />
     <link rel="alternate" hreflang="en" href={`${siteOrigin}/en/`} />
-    
+
     <!-- x-default tells Google where to send visitors who don't speak BG or EN -->
     <link rel="alternate" hreflang="x-default" href={`${siteOrigin}/bg/`} />
   </head>

@@ -6,4 +6,4 @@ export type ProjectType = {
   year: string;
   img: string;
   spanLarge: boolean;
-}
+};

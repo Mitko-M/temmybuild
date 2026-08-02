@@ -1,17 +1,17 @@
 ---
-import heroBackground from '../assets/hero-background.webp'
-import type { HeroLocale } from '../content/locales/types'
-import { Image } from 'astro:assets'
+import heroBackground from "../assets/hero-background.webp";
+import type { HeroLocale } from "../content/locales/types";
+import { Image } from "astro:assets";
 
 interface Props {
-    locale: HeroLocale
+  locale: HeroLocale;
 }
 
-const { locale } = Astro.props
+const { locale } = Astro.props;
 ---
 
-<section id="hero-section">  
-  <Image id="hero-background" src={heroBackground} alt={locale.imageAlt}/>
+<section id="hero-section">
+  <Image id="hero-background" src={heroBackground} alt={locale.imageAlt} />
   <!-- Background overlays -->
   <div class="gradient-vertical"></div>
   <div class="gradient-horizontal"></div>
@@ -20,7 +20,7 @@ const { locale } = Astro.props
   <div id="hero-content">
     <p class="hero-tagline">{locale.tagline}</p>
 
-    <h1 class="hero-title" set:html={locale.title}></h1>
+    <h1 class="hero-title" set:html={locale.title} />
 
     <p class="hero-description">
       {locale.description}
@@ -30,7 +30,12 @@ const { locale } = Astro.props
       <a href="#projects" class="btn-primary">
         {locale.primaryBtn}
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path
+            d="M3 8h10M9 4l4 4-4 4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
         </svg>
       </a>
 
@@ -91,14 +96,12 @@ const { locale } = Astro.props
     z-index: 1;
   }
 
- #hero-content,
- .gradient-vertical,
- .gradient-horizontal {
+  #hero-content,
+  .gradient-vertical,
+  .gradient-horizontal {
     position: relative;
     z-index: 2;
- }
-
-
+  }
 
   /* ===========================
      Gradients
@@ -134,10 +137,10 @@ const { locale } = Astro.props
     margin-right: auto;
     max-width: 80rem;
     width: 100%;
-    padding-left: 1.5rem; 
+    padding-left: 1.5rem;
     padding-right: 1.5rem;
     padding-bottom: 5rem;
-    padding-top: 9rem;  
+    padding-top: 9rem;
   }
 
   /* ===========================
