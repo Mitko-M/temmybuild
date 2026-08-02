@@ -1,9 +1,9 @@
 /** @type {import("prettier").Config} */
 export default {
-  plugins: ["./node_modules/prettier-plugin-astro"],
+  plugins: ["prettier-plugin-astro"],
   overrides: [
     {
-      files: "**/*.astro",
+      files: "*.astro",
       options: {
         parser: "astro",
       },
