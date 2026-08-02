@@ -21,5 +21,10 @@
     "tagline": "Our work",
     "title": "Featured<br /><em>Projects</em>",
     "viewGallery": "View full gallery →"
+  },
+  "services": {
+    "tagline": "What We Do",
+    "title": "Services<br /><em>Offered</em>",
+    "description": "From single splashbacks to full hotel fitouts, we bring the same obsessive attention to detail to every square metre. The craft doesn't change — only the scale."
   }
 }

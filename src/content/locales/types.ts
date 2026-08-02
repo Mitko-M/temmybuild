@@ -23,3 +23,9 @@ export type FeaturedProjectsLocale = {
     title: string;
     viewGallery: string;
 }
+
+export type ServicesLocale = {
+    tagline: string;
+    title: string;
+    description: string;
+}

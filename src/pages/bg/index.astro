@@ -2,12 +2,14 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import HeroSection from '../../components/HeroSection.astro';
-import FeaturedProjects from '../../components/FeaturedProjects.astro'
-import bg from '../../content/locales/bg.json'
+import FeaturedProjects from '../../components/FeaturedProjects.astro';
+import Services from '../../components/Services.astro';
+import bg from '../../content/locales/bg.json';
 ---
 
 <Layout lang='bg' description='Професионален опитен майстор'>
 	<Header locale={bg.nav}/>
 	<HeroSection locale={bg.hero}/>
 	<FeaturedProjects locale={bg.projects} localeType='bg' />
+	<Services locale={bg.services} localeType='bg'/>
 </Layout>
