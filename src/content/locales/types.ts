@@ -11,6 +11,7 @@ export type HeroLocale = {
     tagline: string;
     title: string;
     description: string;
+    imageAlt: string
     primaryBtn: string;
     secondaryBtn: string;
     experience: string;
@@ -28,4 +29,12 @@ export type ServicesLocale = {
     tagline: string;
     title: string;
     description: string;
+}
+
+export type AboutMeLocale = {
+    imageAlt: string;
+    experienceBatch: string;
+    tagline: string;
+    title: string;
+    aboutMeText: string;
 }

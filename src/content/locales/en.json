@@ -11,6 +11,7 @@
     "tagline": "Master tiler — since 2005",
     "title": "Stone, tile<br /><em style='font-style: italic; font-weight: 300; color: #b89a6a;'>and precision,</em><br />crafted to last.",
     "description": "Over two decades of experience in laying ceramic tiles, porcelain stoneware, and natural stone. Each project is crafted with precision and attention to detail.",
+    "imageAlt": "Master tiler placing a tile",
     "primaryBtn": "View Projects",
     "secondaryBtn": "Get a quote",
     "experience": "Years Experience",
@@ -26,5 +27,12 @@
     "tagline": "What We Do",
     "title": "Services<br /><em>Offered</em>",
     "description": "From single splashbacks to full hotel fitouts, we bring the same obsessive attention to detail to every square metre. The craft doesn't change — only the scale."
+  },
+  "aboutMe": {
+    "imageAlt": "Master tiler placing a tile",
+    "experienceBatch": "Years of mastery",
+    "tagline": "The craftsman",
+    "title": "About<br /><em>Krasimir Radev<em>",
+    "aboutMeText": "<p>I started laying tile in 2003, just out of trade school, on small bathroom jobs in the western suburbs. By 2008 I was handling marble installations in Point Piper. Today I run a tight crew of four, and we take on work that other tilers walk away from.</p><p>The work is physical, precise, and unforgiving. You can't hide a bad tile job — the grout lines speak for themselves. That's why every job I touch gets the same treatment: laser levels, proper substrates, correct adhesive selection for every material, and a finish that looks as good in ten years as it doeson day one.</p><p>I don't do volume work. I choose projects where quality matters and clients who understand that doing it right once is cheaper than doing it twice.</p>"
   }
 }

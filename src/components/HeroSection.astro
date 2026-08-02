@@ -11,7 +11,7 @@ const { locale } = Astro.props
 ---
 
 <section id="hero-section">  
-  <Image id="hero-background" src={heroBackground} alt={"Master tiler placing a tile"}/>
+  <Image id="hero-background" src={heroBackground} alt={locale.imageAlt}/>
   <!-- Background overlays -->
   <div class="gradient-vertical"></div>
   <div class="gradient-horizontal"></div>

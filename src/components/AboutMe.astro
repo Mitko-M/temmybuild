@@ -1,0 +1,258 @@
+---
+import aboutMeImage from '../assets/about-me.webp';
+import { Image } from 'astro:assets';
+import type {AboutMeLocale} from '../content/locales/types';
+
+// interface Credential {
+//   label: string
+//   value: string
+// }
+
+// const credentials: Credential[] = [
+//   { label: 'Licensed', value: 'NSW Fair Trading\nLicence #234891' },
+//   { label: 'Insured', value: 'Public Liability\n$20M Coverage' },
+//   { label: 'Certified', value: 'Australian Tile\nCouncil Member' },
+//   { label: 'Warranted', value: '5-Year Workmanship\nGuarantee' },
+// ]
+
+interface Props {
+    locale: AboutMeLocale;
+}
+
+const {locale} = Astro.props;
+---
+
+<section id="about" class="about-section">
+  <div class="about-container">
+
+    <div class="about-grid">
+
+      <!-- Image Column -->
+      <div class="about-image-wrapper">
+        <div class="about-image">
+          <Image
+            src={aboutMeImage}
+            alt={locale.imageAlt}
+          />
+          <div class="about-image-gradient"></div>
+        </div>
+
+        <!-- Floating Badge -->
+        <div class="about-badge">
+          <div class="badge-number">20+</div>
+          <div class="badge-label">{locale.experienceBatch}</div>
+        </div>
+      </div>
+
+      <!-- Text Column -->
+      <div class="about-text">
+        <p class="about-eyebrow">{locale.tagline}</p>
+
+        <h2 class="about-title" set:html={locale.title}></h2>
+
+        <div class="about-paragraphs" set:html={locale.aboutMeText}></div>
+
+        <!-- Credentials Grid -->
+        <!-- <div class="about-credentials">
+          {credentials.map((c) => (
+            <div class="credential-card">
+              <div class="credential-label">{c.label}</div>
+              <div class="credential-value">{c.value}</div>
+            </div>
+          ))}
+        </div> -->
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* SECTION */
+.about-section {
+  padding: 6rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+@media (min-width: 768px) {
+  .about-section {
+    padding: 9rem 0;
+  }
+}
+
+/* CONTAINER (max-w-7xl + px-6/md:px-12) */
+.about-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .about-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* GRID */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+  }
+}
+
+/* IMAGE COLUMN */
+.about-image-wrapper {
+  position: relative;
+}
+
+.about-image {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-card);
+  aspect-ratio: 3 / 4;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.about-image-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(15, 14, 13, 0.6),
+    transparent
+  );
+}
+
+/* FLOATING BADGE */
+.about-badge {
+  position: absolute;
+  right: 0;
+  bottom: -1.5rem;
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  padding: 1.5rem;
+  max-width: 200px;
+}
+
+@media (min-width: 768px) {
+  .about-badge {
+    right: -2rem;
+  }
+}
+
+.badge-number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.badge-label {
+  margin-top: 0.25rem;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+}
+
+/* TEXT COLUMN */
+.about-text {
+  padding-top: 0;
+}
+
+@media (min-width: 1024px) {
+  .about-text {
+    padding-top: 2rem;
+  }
+}
+
+/* EYEBROW */
+.about-eyebrow {
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* TITLE */
+.about-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  font-size: 2.25rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .about-title {
+    font-size: 3rem;
+  }
+}
+
+.about-title em {
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+/* PARAGRAPHS */
+.about-paragraphs {
+  color: var(--color-muted-foreground);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* CREDENTIALS GRID */
+.about-credentials {
+  margin-top: 3rem;
+  background: var(--color-border);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+}
+
+.credential-card {
+  background: var(--color-background);
+  padding: 1.25rem;
+}
+
+.credential-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-primary);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.credential-value {
+  color: var(--color-foreground);
+  font-size: 0.875rem;
+  font-weight: 300;
+  white-space: pre-line;
+  line-height: 1.4;
+}
+</style>
