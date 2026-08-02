@@ -1,4 +1,6 @@
 :root {
+    /* ! TODO: The font isn't applied for some reason*/
+    --font-display: "General Sans", sans-serif;
     --color-background: #0f0e0d;
     --color-foreground: #f5f2ed;
     --color-card: #1a1816;
