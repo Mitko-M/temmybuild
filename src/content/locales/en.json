@@ -21,7 +21,7 @@
   "projects": {
     "tagline": "Our work",
     "title": "Featured<br /><em>Projects</em>",
-    "viewGallery": "View full gallery →"
+    "viewGallery": "View gallery →"
   },
   "services": {
     "tagline": "What We Do",
@@ -34,5 +34,11 @@
     "tagline": "The craftsman",
     "title": "About<br /><em>Krasimir Radev<em>",
     "aboutMeText": "<p>I started laying tile in 2003, just out of trade school, on small bathroom jobs in the western suburbs. By 2008 I was handling marble installations in Point Piper. Today I run a tight crew of four, and we take on work that other tilers walk away from.</p><p>The work is physical, precise, and unforgiving. You can't hide a bad tile job — the grout lines speak for themselves. That's why every job I touch gets the same treatment: laser levels, proper substrates, correct adhesive selection for every material, and a finish that looks as good in ten years as it doeson day one.</p><p>I don't do volume work. I choose projects where quality matters and clients who understand that doing it right once is cheaper than doing it twice.</p>"
+  },
+  "gallery": {
+    "tagline": "Portfolio",
+    "title": "Projects<br/><em class=\"gallery-title\">gallery</em>",
+    "description": "A selection of residential and commercial installations from the past five years.",
+    "viewGallery": "View full gallery →"
   }
 }

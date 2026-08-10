@@ -38,3 +38,10 @@ export type AboutMeLocale = {
   title: string;
   aboutMeText: string;
 };
+
+export type GalleryLocale = {
+  tagline: string;
+  title: string;
+  description: string;
+  viewGallery: string;
+};
