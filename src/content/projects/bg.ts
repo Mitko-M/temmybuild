@@ -1,5 +1,6 @@
 import type { ProjectType } from "./types";
 
+//! TODO: Update with real data
 export const bg: ProjectType[] = [
   {
     id: "carrara-marble-bathroom",
