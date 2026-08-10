@@ -1,11 +1,12 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import AboutMe from "../../components/AboutMe.astro";
+import FeaturedProjects from "../../components/FeaturedProjects.astro";
+import GalleryPreview from "../../components/GalleryPreview.astro";
 import Header from "../../components/Header.astro";
 import HeroSection from "../../components/HeroSection.astro";
-import FeaturedProjects from "../../components/FeaturedProjects.astro";
 import Services from "../../components/Services.astro";
-import AboutMe from "../../components/AboutMe.astro";
 import bg from "../../content/locales/bg.json";
+import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout lang="bg" description="Професионален опитен майстор">
@@ -14,4 +15,5 @@ import bg from "../../content/locales/bg.json";
   <FeaturedProjects locale={bg.projects} localeType="bg" />
   <Services locale={bg.services} localeType="bg" />
   <AboutMe locale={bg.aboutMe} />
+  <GalleryPreview locale={bg.gallery} localeType="bg" />
 </Layout>

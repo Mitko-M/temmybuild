@@ -1,0 +1,326 @@
+---
+import { createGalleryPreviewData } from "../content/gallery/gallery";
+import type { GalleryLocale } from "../content/locales/types";
+
+interface Props {
+  locale: GalleryLocale;
+  localeType: string;
+}
+
+const { locale, localeType } = Astro.props;
+const photos = createGalleryPreviewData(localeType);
+---
+
+<section id="gallery" class="gallery-section">
+  <div class="gallery-container">
+    <div class="gallery-header">
+      <div>
+        <p class="gallery-label">{locale.tagline}</p>
+        <h2 class="gallery-title" set:html={locale.title} />
+      </div>
+
+      <div
+        style="gap: 20px; display: flex; flex-direction: column; align-items: start;"
+      >
+        <p class="gallery-description">{locale.description}</p>
+        <a href={`/${localeType}/gallery`} id="full-gallery"
+          >{locale.viewGallery}</a
+        >
+      </div>
+    </div>
+
+    <div class="gallery-grid">
+      {
+        photos.map((p, i) => (
+          <div id={`gal-item-${i}`} class={`gallery-item ${p.cols}`}>
+            <img src={p.src} alt={p.alt} class="gallery-image" />
+            <div class="gallery-overlay">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                class="gallery-plus"
+              >
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="15"
+                  stroke="var(--color-primary)"
+                  stroke-width="1"
+                />
+                <path
+                  d="M12 16h8M16 12v8"
+                  stroke="var(--color-primary)"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- PRE-RENDERED LIGHTBOXES -->
+  {
+    photos.map((p, i) => (
+      <div id={`lightbox-${i}`} class="preview-lightbox hidden">
+        <div class="preview-lightbox-content">
+          <button class="preview-lightbox-close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M18 6L6 18M6 6l12 12"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+
+          <img src={p.src} alt={p.alt} class="preview-lightbox-image" />
+        </div>
+      </div>
+    ))
+  }
+</section>
+
+<style>
+  .hidden {
+    display: none !important;
+  }
+
+  /* Full gallery btn */
+  #full-gallery {
+    color: var(--color-muted-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 12px;
+    border-bottom: 1px solid var(--color-muted);
+    padding-bottom: 2px;
+    text-decoration: none;
+    transition:
+      color 0.18s ease,
+      border-color 0.18s ease;
+  }
+
+  #full-gallery:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  /* Section */
+  .gallery-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    border-top: 1px solid var(--color-border);
+  }
+  @media (min-width: 768px) {
+    .gallery-section {
+      padding-top: 9rem;
+      padding-bottom: 9rem;
+    }
+  }
+
+  /* Container */
+  .gallery-container {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .gallery-container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  /* Header layout */
+  .gallery-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+  @media (min-width: 768px) {
+    .gallery-header {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+  }
+
+  /* Label */
+  .gallery-label {
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  /* Title */
+  .gallery-title {
+    font-family: var(--font-display), sans-serif;
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--color-foreground);
+  }
+  @media (min-width: 768px) {
+    .gallery-title {
+      font-size: 3rem;
+    }
+  }
+
+  /* Description */
+  .gallery-description {
+    color: var(--color-muted-foreground);
+    font-size: 0.875rem;
+    max-width: 20rem;
+    line-height: 1.625;
+  }
+
+  /* Grid spans */
+  .col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+  .col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
+  .row-span-1 {
+    grid-row: span 1 / span 1;
+  }
+  .row-span-2 {
+    grid-row: span 2 / span 2;
+  }
+
+  /* Grid */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 200px;
+    gap: 0.75rem;
+  }
+  @media (min-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 220px;
+    }
+  }
+
+  /* Item */
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-card);
+    cursor: pointer;
+  }
+  .gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 700ms;
+  }
+  .gallery-item:hover .gallery-image {
+    transform: scale(1.05);
+  }
+
+  /* Overlay */
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(15, 14, 13, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 300ms;
+  }
+  .gallery-item:hover .gallery-overlay {
+    background-color: rgba(15, 14, 13, 0.4);
+  }
+  .gallery-plus {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+  .gallery-item:hover .gallery-plus {
+    opacity: 1;
+  }
+
+  /* Lightbox overlay */
+  .preview-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(15, 14, 13, 0.75);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  /* Content wrapper */
+  .preview-lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Image */
+  .preview-lightbox-image {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: var(--radius);
+  }
+
+  /* Close button */
+  .preview-lightbox-close {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-muted-foreground);
+    transition: color 200ms;
+  }
+  .preview-lightbox-close:hover {
+    color: var(--color-foreground);
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".gallery-item");
+
+    items.forEach((item, index) => {
+      item.addEventListener("click", () => {
+        const lb = document.getElementById(`lightbox-${index}`);
+        if (lb) lb.classList.remove("hidden");
+      });
+    });
+
+    const lightboxes = document.querySelectorAll(".preview-lightbox");
+
+    lightboxes.forEach((lb) => {
+      lb.addEventListener("click", (e) => {
+        if (e.target === lb) lb.classList.add("hidden");
+      });
+
+      lb.querySelector(".preview-lightbox-close").addEventListener(
+        "click",
+        () => lb.classList.add("hidden"),
+      );
+    });
+  });
+</script>

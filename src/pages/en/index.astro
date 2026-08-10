@@ -1,11 +1,12 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import AboutMe from "../../components/AboutMe.astro";
+import FeaturedProjects from "../../components/FeaturedProjects.astro";
+import GalleryPreview from "../../components/GalleryPreview.astro";
 import Header from "../../components/Header.astro";
 import HeroSections from "../../components/HeroSection.astro";
-import FeaturedProjects from "../../components/FeaturedProjects.astro";
 import Services from "../../components/Services.astro";
-import AboutMe from "../../components/AboutMe.astro";
 import en from "../../content/locales/en.json";
+import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout lang="en" description="A professional experienced tiler">
@@ -14,4 +15,5 @@ import en from "../../content/locales/en.json";
   <FeaturedProjects locale={en.projects} localeType="en" />
   <Services locale={en.services} localeType="en" />
   <AboutMe locale={en.aboutMe} />
+  <GalleryPreview locale={en.gallery} localeType="en" />
 </Layout>
