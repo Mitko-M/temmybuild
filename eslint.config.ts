@@ -31,7 +31,7 @@ export default defineConfig([
       prettierConfig,
     ],
     rules: {
-      "prettier/prettier": "warn",
+      "prettier/prettier": ["warn", { endOfLine: "auto" }],
       "no-irregular-whitespace": "off",
       "no-misleading-character-class": "off",
     },
