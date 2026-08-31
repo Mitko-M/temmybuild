@@ -1,0 +1,52 @@
+[
+  {
+    "src": "https://source.unsplash.com/random/800x600?interior",
+    "alt": "Interior design demo",
+    "cols": "col-span-1 row-span-2"
+  },
+  {
+    "src": "https://source.unsplash.com/random/800x600?architecture",
+    "alt": "Architecture demo",
+    "cols": "col-span-1 row-span-1"
+  },
+  {
+    "src": "https://source.unsplash.com/random/800x600?construction",
+    "alt": "Construction demo",
+    "cols": "col-span-2 row-span-2"
+  },
+  {
+    "src": "https://source.unsplash.com/random/800x600?renovation",
+    "alt": "Renovation demo",
+    "cols": "col-span-1 row-span-1"
+  },
+  {
+    "src": "https://source.unsplash.com/random/800x600?design",
+    "alt": "Design demo",
+    "cols": "col-span-1 row-span-1"
+  },
+  {
+    "src": "https://source.unsplash.com/random/800x600?flooring",
+    "alt": "Flooring demo",
+    "cols": "col-span-2 row-span-1"
+  },
+  {
+    "src": "https://source.unsplash.com/random/800x600?kitchen",
+    "alt": "Kitchen renovation demo",
+    "cols": "col-span-1 row-span-2"
+  },
+  {
+    "src": "https://source.unsplash.com/random/800x600?bathroom",
+    "alt": "Bathroom renovation demo",
+    "cols": "col-span-1 row-span-1"
+  },
+  {
+    "src": "https://source.unsplash.com/random/800x600?livingroom",
+    "alt": "Living room demo",
+    "cols": "col-span-2 row-span-1"
+  },
+  {
+    "src": "https://source.unsplash.com/random/800x600?home",
+    "alt": "Home interior demo",
+    "cols": "col-span-1 row-span-1"
+  }
+]

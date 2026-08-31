@@ -1,8 +1,11 @@
 ---
 import Gallery from "../../components/Gallery/Gallery";
+import GalleryHeader from "../../components/Gallery/GalleryHeader.astro";
+import bg from "../../content/locales/bg.json";
 import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout lang="bg" description="Галерията на един професионален опитен майстор">
+  <GalleryHeader locale={bg.galleryHeader} />
   <Gallery />
 </Layout>
