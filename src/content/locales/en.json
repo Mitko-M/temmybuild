@@ -40,5 +40,8 @@
     "title": "Projects<br/><em class=\"gallery-title\">gallery</em>",
     "description": "A selection of residential and commercial installations from the past five years.",
     "viewGallery": "View full gallery →"
+  },
+  "galleryHeader": {
+    "quote": "Get a quote"
   }
 }

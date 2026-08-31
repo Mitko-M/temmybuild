@@ -45,3 +45,7 @@ export type GalleryLocale = {
   description: string;
   viewGallery: string;
 };
+
+export type GalleryHeader = {
+  quote: string;
+};

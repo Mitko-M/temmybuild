@@ -1,5 +1,6 @@
 import type { GalleryType } from "./types";
 
+//! TODO: Replace demo data with real photos
 export const enPreview: GalleryType[] = [
   {
     src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=800&fit=crop&auto=format",
