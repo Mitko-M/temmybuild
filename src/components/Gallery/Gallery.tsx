@@ -1,5 +1,6 @@
 import galleryBackground from "../../../public/images/gallery/gallery-bg.webp";
 import styles from "./Gallery.module.css";
+import GalleryGrid from "./GalleryGrid";
 
 export default function Gallery() {
   return (
@@ -10,6 +11,7 @@ export default function Gallery() {
         <p>Browse, zoom, and share images from our curated collection.</p>
         <a href="#">Browser gallery</a>
       </div>
+      <GalleryGrid />
     </div>
   );
 }
