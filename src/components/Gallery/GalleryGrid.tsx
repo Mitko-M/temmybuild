@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactElement } from "react";
-import galleryData from "../../data/gallery.json";
+import galleryData from "@/data/gallery.json";
 import styles from "./Gallery.module.css";
 import GalleryRow from "./GalleryRow";
 import type { galleryPhoto } from "./types";

@@ -1,5 +1,5 @@
-import galleryBackground from "../../../public/images/gallery/gallery-bg.webp";
-import ReturnToTop from "../ui/ReturnToTop/ReturnToTop";
+import galleryBackground from "@public/images/gallery/gallery-bg.webp";
+import ReturnToTop from "@/components/ui/ReturnToTop/ReturnToTop";
 import styles from "./Gallery.module.css";
 import GalleryGrid from "./GalleryGrid";
 
