@@ -11,7 +11,7 @@
     padding: 10px;
     font-size: 12px;
     border-radius: 50%;
-    border: none;
+    border: 2px solid black;
 
     .iconStyles {
       color: black;
@@ -22,6 +22,7 @@
       border-color: var(--color-primary);
       color: var(--color-primary);
       background-color: #c9ab7a;
+      border: 2px solid white;
 
       .iconStyles {
         color: white;
