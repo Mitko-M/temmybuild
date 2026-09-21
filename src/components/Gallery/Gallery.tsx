@@ -1,4 +1,5 @@
 import galleryBackground from "../../../public/images/gallery/gallery-bg.webp";
+import ReturnToTop from "../ui/ReturnToTop/ReturnToTop";
 import styles from "./Gallery.module.css";
 import GalleryGrid from "./GalleryGrid";
 
@@ -9,9 +10,10 @@ export default function Gallery() {
         <img src={galleryBackground.src} alt="Gallery intro background" />
         <h1>Discover beautiful photography</h1>
         <p>Browse, zoom, and share images from our curated collection.</p>
-        <a href="#">Browser gallery</a>
+        <a href="#gallery-grid">Browser gallery</a>
       </div>
       <GalleryGrid />
+      <ReturnToTop />
     </div>
   );
 }
