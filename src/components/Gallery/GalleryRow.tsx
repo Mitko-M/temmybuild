@@ -8,9 +8,14 @@ type Props = {
 export default function GalleryRow({ photosRowData }: Props) {
   return (
     <div className={styles.galleryRow}>
-      {photosRowData.map((photo, i) => (
-        <div key={i} className={styles.galleryPhoto}>
-          <img src={photo.src} alt={photo.alt} />
+      {photosRowData.map((photo) => (
+        <div key={photo.src} className={styles.galleryPhoto}>
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       ))}
     </div>
