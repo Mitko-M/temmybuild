@@ -13,10 +13,10 @@
     "lint": "eslint . --ext .js,.ts,.astro,.css,.json"
   },
   "dependencies": {
-    "@astrojs/react": "^6.0.2",
+    "@astrojs/react": "^6.0.5",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
-    "astro": "^7.1.6",
+    "astro": "^7.3.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
