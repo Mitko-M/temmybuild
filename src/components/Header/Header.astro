@@ -309,6 +309,17 @@ const { locale } = Astro.props;
       }
     }
 
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        //Close menu on link click
+        burger.classList.toggle("open");
+        mobileNav?.classList.toggle("hidden");
+
+        //Recalculate header state so the scroll styling stays correct
+        updateHeaderState();
+      });
+    });
+
     // This resize event listener was added to fix DevTools viewport glitch where mobile nav remained on desktop after changing
     window.addEventListener("resize", () => {
       const isMobile = window.matchMedia("(max-width: 1000px)").matches;
