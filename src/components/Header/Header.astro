@@ -312,8 +312,10 @@ const { locale } = Astro.props;
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
         //Close menu on link click
-        burger.classList.toggle("open");
-        mobileNav?.classList.toggle("hidden");
+        if (!mobileNav?.classList.contains("hidden")) {
+          burger.classList.toggle("open");
+          mobileNav?.classList.toggle("hidden");
+        }
 
         //Recalculate header state so the scroll styling stays correct
         updateHeaderState();
