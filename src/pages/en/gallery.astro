@@ -1,0 +1,11 @@
+---
+import Gallery from "@/components/Gallery/Gallery";
+import GalleryHeader from "@/components/Gallery/GalleryHeader.astro";
+import en from "@/content/locales/en.json";
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout lang="en" description="The gallery of an experienced master tiler.">
+  <GalleryHeader locale={en.galleryHeader} />
+  <Gallery locale={en.gallery} client:visible />
+</Layout>

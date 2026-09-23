@@ -1,18 +1,23 @@
-import galleryBackground from "@public/images/gallery/gallery-bg.webp";
 import ReturnToTop from "@/components/ui/ReturnToTop/ReturnToTop";
+import type { GalleryLocale } from "@/content/locales/types";
+import galleryBackground from "@public/images/gallery/gallery-bg.webp";
 import styles from "./Gallery.module.css";
 import GalleryGrid from "./GalleryGrid";
 
-export default function Gallery() {
+type Props = {
+  locale: GalleryLocale;
+};
+
+export default function Gallery({ locale }: Props) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.galleryIntro}>
         <img src={galleryBackground.src} alt="Gallery intro background" />
-        <h1>Discover beautiful photography</h1>
-        <p>Browse, zoom, and share images from our curated collection.</p>
-        <a href="#gallery-grid">Browser gallery</a>
+        <h1>{locale.introTitle}</h1>
+        <p>{locale.introDescription}</p>
+        <a href="#gallery-grid">{locale.introButtonLabel}</a>
       </div>
-      <GalleryGrid />
+      <GalleryGrid locale={locale} />
       <ReturnToTop />
     </div>
   );

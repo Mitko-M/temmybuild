@@ -49,3 +49,16 @@ export type GalleryPreviewLocale = {
 export type GalleryHeader = {
   quote: string;
 };
+
+export type GalleryLocale = {
+  //! TODO: Refactor the intro since it's not even good, it's just there for demo.
+  introTitle: string;
+  introDescription: string;
+  introButtonLabel: string;
+
+  gridTitle: string;
+  gridDescription: string;
+
+  loadMoreLabel: string;
+  noPhotosMessage: string;
+};
