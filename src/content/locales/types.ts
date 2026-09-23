@@ -39,7 +39,7 @@ export type AboutMeLocale = {
   aboutMeText: string;
 };
 
-export type GalleryLocale = {
+export type GalleryPreviewLocale = {
   tagline: string;
   title: string;
   description: string;
