@@ -6,6 +6,7 @@ import GalleryPreview from "@/components/Gallery/GalleryPreview.astro";
 import Header from "@/components/Header/Header.astro";
 import HeroSection from "@/components/HeroSection/HeroSection.astro";
 import Services from "@/components/Services/Services.astro";
+import ReturnToTop from "@/components/ui/ReturnToTop/ReturnToTop";
 import bg from "@/content/locales/bg.json";
 import Layout from "@/layouts/Layout.astro";
 ---
@@ -18,4 +19,5 @@ import Layout from "@/layouts/Layout.astro";
   <AboutMe locale={bg.aboutMe} />
   <GalleryPreview locale={bg.galleryPreview} localeType="bg" />
   <Contact />
+  <ReturnToTop client:idle />
 </Layout>

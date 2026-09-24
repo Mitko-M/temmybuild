@@ -1,4 +1,3 @@
-import ReturnToTop from "@/components/ui/ReturnToTop/ReturnToTop";
 import type { GalleryLocale } from "@/content/locales/types";
 import galleryBackground from "@public/images/gallery/gallery-bg.webp";
 import styles from "./Gallery.module.css";
@@ -18,7 +17,6 @@ export default function Gallery({ locale }: Props) {
         <a href="#gallery-grid">{locale.introButtonLabel}</a>
       </div>
       <GalleryGrid locale={locale} />
-      <ReturnToTop />
     </div>
   );
 }
