@@ -1,0 +1,257 @@
+.section {
+  padding: 6rem 0;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-background);
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+  }
+}
+
+/* LEFT SIDE */
+.left {
+  display: flex;
+  flex-direction: column;
+}
+
+.enquiriesLabel {
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  color: var(--color-foreground);
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+.titleEm {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.description {
+  color: var(--color-muted-foreground);
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 24rem;
+  margin-bottom: 3rem;
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.dropdownMenu {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: none;
+  padding-right: 2.5rem; /* space for chevron */
+}
+
+/* Default chevron (down) */
+.chevron {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform 0.25s ease;
+  pointer-events: none;
+  color: var(--color-muted-foreground);
+}
+
+/* Rotate chevron upward */
+.chevronUp {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.dropdownMenu option {
+  background-color: #1a1816;
+  color: white;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.iconBox {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infoLabel {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.infoValue {
+  color: var(--color-foreground);
+  font-weight: 300;
+  font-size: 0.875rem;
+}
+
+/* FORM */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.input {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-foreground);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 300;
+  transition: border-color 0.2s;
+}
+
+.input::placeholder {
+  color: var(--color-muted);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.input,
+.textarea {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-foreground);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 300;
+  transition: border-color 0.2s;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--color-muted);
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.textarea {
+  resize: none;
+}
+
+.submitBtn {
+  width: 100%;
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  padding: 1rem 0;
+  transition: background 0.2s;
+}
+
+.submitBtn:hover {
+  background: #c9ab7a; /* optional: you can also use a variable if you add one */
+}
+
+.disclaimer {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+/* SENT MESSAGE */
+.sentWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 0;
+}
+
+.sentIconBox {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.sentTitle {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--color-foreground);
+}
+
+.sentText {
+  color: var(--color-muted-foreground);
+  font-weight: 300;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  max-width: 24rem;
+}
